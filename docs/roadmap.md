@@ -5,7 +5,7 @@
 | Fase | Descrição | Status |
 |---|---|---|
 | **Fase 1** | Estruturação do repositório e documentação | ✅ Concluída |
-| **Fase 2** | Análise exploratória e pré-processamento | 🔄 Em andamento |
+| **Fase 2** | Análise exploratória e pré-processamento | 🔄 Em andamento (EDA concluída) |
 | **Fase 3** | Clusterização e interpretação dos perfis | ⬜ Pendente |
 | **Fase 4** | Predição de churn e comparação de modelos | ⬜ Pendente |
 | **Fase 5** | Recomendações de retenção e relatório final | ⬜ Pendente |
@@ -15,9 +15,9 @@
 ```
 [✅] Definição do escopo e documentação inicial
 [✅] Estrutura do repositório
-[🔄] EDA — distribuições, correlações, análise da variável alvo
-[⬜] Tratamento de nulos e inconsistências
-[⬜] Encoding e normalização
+[✅] EDA — distribuições, correlações, análise da variável alvo (`notebooks/01_eda.ipynb`)
+[✅] Tratamento de nulos e inconsistências (TotalCharges, duplicatas)
+[🔄] Encoding e normalização (início no EDA; completo em `02_preprocessing`)
 [⬜] Implementação K-Means + seleção do K ideal
 [⬜] Implementação DBSCAN e Agglomerative
 [⬜] Comparação e seleção do melhor modelo de cluster

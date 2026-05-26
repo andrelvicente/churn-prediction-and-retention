@@ -1,0 +1,19 @@
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+*.egg-info/
+dist/
+build/
+
+# Dataset bruto (baixar via Kaggle ou README)
+data/raw/*.csv
+data/processed/*.csv
+
+# Figuras geradas pelos notebooks
+reports/figures/*.png
+
+# Modelos e artefatos gerados localmente
+models/*.pkl
+models/*.joblib

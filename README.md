@@ -41,9 +41,9 @@ Dados → EDA → Pré-processamento → Clusterização → Predição de Churn
 ## Instalação
 
 ```bash
-git clone https://github.com/<seu-usuario>/churn-prediction-and-retention.git
+git clone https://github.com/andrelvicente/churn-prediction-and-retention.git
 cd churn-prediction-and-retention
-python -m venv .venv && source .venv/bin/activate
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
