@@ -6,9 +6,9 @@
 
 [André Luiz Vicente Silva](https://github.com/andrelvicente) · [Fernando Santos de Almeida](https://github.com/Fernando-alme) · [João Henrique Batista Junior](https://github.com/whoiamrootuser)
 
-**Orientadores**
+**Professores Orientadores**
 
-[Gustavo Prado Oliveira](https://github.com/gpradooliv) · [Clarimundo](https://github.com/gpradooliv))
+[Gustavo Prado Oliveira](https://github.com/gpradooliv) · [Clarimundo](https://github.com/gpradooliv)
 
 **Predição de cancelamento e recomendação de retenção de clientes com clustering + ML**
 
