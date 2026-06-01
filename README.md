@@ -6,6 +6,10 @@
 
 [André Luiz Vicente Silva](https://github.com/andrelvicente) · [Fernando Santos de Almeida](https://github.com/Fernando-alme) · [João Henrique Batista Junior](https://github.com/whoiamrootuser)
 
+**Orientadores**
+
+[Gustavo Prado Oliveira](https://github.com/gpradooliv) · [Clarimundo](https://github.com/gpradooliv))
+
 **Predição de cancelamento e recomendação de retenção de clientes com clustering + ML**
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
