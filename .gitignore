@@ -8,11 +8,11 @@ dist/
 build/
 
 # Dataset bruto (baixar via Kaggle ou README)
-data/raw/*.csv
-data/processed/*.csv
+# data/raw/*.csv
+# data/processed/*.csv
 
 # Figuras geradas pelos notebooks
-reports/figures/*.png
+# reports/figures/*.png
 
 # Modelos e artefatos gerados localmente
 models/*.pkl
