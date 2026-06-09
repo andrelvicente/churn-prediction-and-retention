@@ -115,4 +115,4 @@ Python · Pandas · NumPy · Scikit-learn · Matplotlib · Seaborn · Jupyter ·
 
 ## Licença
 
-[MIT](LICENSE) — Projeto acadêmico, 2026.
+[MIT](LICENSE) — Projeto acadêmico, 2026. 
