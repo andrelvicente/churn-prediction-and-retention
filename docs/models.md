@@ -1,5 +1,9 @@
 # Modelos Preditivos
 
+> **Status:** Fase 4 pendente. A coluna `cluster` já está disponível em `telco_with_clusters.csv` para o experimento comparativo.
+
+---
+
 ## Algoritmos
 
 | Modelo | Papel no Projeto |
@@ -11,10 +15,29 @@
 
 ---
 
+## Input Disponível para Treinamento
+
+| Dataset | Colunas | Uso |
+|---|---|---|
+| `telco_clean.csv` | 35 colunas (sem cluster) | Experimento baseline |
+| `telco_with_clusters.csv` | 38 colunas (+ `cluster`, `cluster_label`, `clustering_algorithm`) | Experimento + cluster |
+
+Atributos de cluster disponíveis:
+
+| Coluna | Valores | Descrição |
+|---|---|---|
+| `cluster` | 0, 1 | ID numérico do cluster K-Means |
+| `cluster_label` | Insatisfeito com serviços, Econômico estável | Rótulo semântico |
+| `clustering_algorithm` | kmeans | Algoritmo que gerou o rótulo |
+
+**Hipótese:** incluir `cluster` como feature categórica deve melhorar Recall e F1, especialmente para identificar clientes do Cluster 0 (31,8% de churn).
+
+---
+
 ## Estratégia de Treinamento
 
 ```
-Dataset com Cluster
+telco_with_clusters.csv
        │
        ├── Divisão Treino/Teste (80/20 estratificada)
        ├── Validação Cruzada (Stratified K-Fold, k=5)
@@ -46,8 +69,12 @@ O objetivo central é quantificar o ganho obtido pela incorporação dos cluster
 
 | Experimento | Atributos de Entrada | Hipótese |
 |---|---|---|
-| **Baseline** | Atributos originais | Performance de referência |
+| **Baseline** | Atributos originais (sem `cluster`) | Performance de referência |
 | **+ Cluster** | Atributos originais + `cluster` | F1 e AUC superiores |
+
+Com base nos perfis identificados, espera-se que o modelo com cluster capture melhor a separação entre:
+- Cluster 0 (31,8% churn) — clientes de alto risco
+- Cluster 1 (8,0% churn) — clientes estáveis
 
 Os resultados serão apresentados com intervalos de confiança (validação cruzada).
 
@@ -57,5 +84,13 @@ Os resultados serão apresentados com intervalos de confiança (validação cruz
 
 | Modelo | F1-Score Alvo | ROC-AUC Alvo |
 |---|---|---|
-| Baseline (sem cluster) | ≥ 0.70 | ≥ 0.78 |
-| Com cluster incorporado | ≥ 0.75 | ≥ 0.82 |
+| Baseline (sem cluster) | ≥ 0,70 | ≥ 0,78 |
+| Com cluster incorporado | ≥ 0,75 | ≥ 0,82 |
+
+---
+
+## Contexto do Clustering (Semana 2)
+
+O baseline K-Means (K=2) produziu Silhouette Score = 0,344 — estrutura moderada. Mesmo com separação imperfeita, a diferença de churn entre clusters (31,8% vs. 8,0%) sugere valor preditivo na feature `cluster`.
+
+Se algoritmos alternativos (DBSCAN, Agglomerative) produzirem segmentações mais granulares na Semana 3, o experimento comparativo será refeito com o melhor modelo de cluster.

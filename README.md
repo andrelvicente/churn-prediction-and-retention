@@ -24,21 +24,35 @@
 
 Projeto integrador das disciplinas de **Agrupamento de Dados** e **Inteligência Computacional**.
 
-**Dataset:** [Telco Customer Churn 📡](https://www.kaggle.com/datasets/blastchar/telco-customer-churn/data) (~7k clientes, Kaggle)
+**Dataset:** [Telco Customer Churn](https://www.kaggle.com/datasets/blastchar/telco-customer-churn/data) (~7k clientes, Kaggle)
 
 ---
 
 ## Pipeline
 
 ```
-Dados → EDA → Pré-processamento → Clusterização → Predição de Churn → Recomendações
+Dados → EDA → Clusterização (baseline) → Predição de Churn → Recomendações
 ```
 
 1. Análise exploratória e tratamento dos dados
-2. Clusterização de clientes (K-Means, DBSCAN, Agglomerative)
+2. Clusterização baseline de clientes (K-Means; DBSCAN e Agglomerative na Semana 3)
 3. Cluster como atributo adicional no modelo preditivo
 4. Treinamento e comparação dos modelos (Random Forest, Decision Tree, Logistic Regression, MLP)
 5. Recomendações de retenção personalizadas por perfil
+
+---
+
+## Status atual
+
+| Semana | Entrega | Status |
+|---|---|---|
+| 1 | EDA e base limpa | Concluída (`01_eda.ipynb`) |
+| 2 | Agrupamento baseline (K-Means) | Concluída (`02_clustering.ipynb`) |
+| 3 | Comparação de algoritmos de cluster | Pendente |
+| 4 | Predição de churn | Pendente |
+| 5 | Recomendações de retenção | Pendente |
+
+**Descoberta principal (Semana 2):** o K-Means com K=2 separou dois perfis distintos — clientes de **alto gasto e alto churn** (77,9%) vs. clientes **econômicos e estáveis** (22,1%). Silhouette Score = 0,344.
 
 ---
 
@@ -58,20 +72,24 @@ Baixe o dataset em [Kaggle](https://www.kaggle.com/datasets/blastchar/telco-cust
 Execute os notebooks na ordem numérica em `notebooks/`:
 
 ```
-01_eda → 02_preprocessing → 03_clustering → 04_churn_prediction → 05_recommendations
+01_eda → 02_clustering → 03_clustering_advanced → 04_churn_prediction → 05_recommendations
 ```
+
+Notebooks implementados até o momento: `01_eda`, `02_clustering`.
 
 ---
 
 ## Estrutura
 
 ```
-data/          # Dataset bruto e processado
-notebooks/     # Pipeline interativo (Jupyter)
-src/           # Módulos Python reutilizáveis
-models/        # Modelos treinados serializados
-reports/       # Gráficos e relatório final
-docs/          # Documentação detalhada do projeto
+data/
+  raw/              # Dataset original (Telco-Customer-Churn.csv)
+  processed/        # telco_clean.csv, telco_clustering_base.csv, telco_with_clusters.csv
+notebooks/          # Pipeline interativo (Jupyter)
+models/             # scaler.joblib, kmeans_model.joblib
+reports/figures/    # Gráficos EDA (01–03) e clustering (04–09)
+docs/               # Documentação detalhada do projeto
+src/                # Módulos Python reutilizáveis (futuro)
 ```
 
 ---
@@ -80,9 +98,9 @@ docs/          # Documentação detalhada do projeto
 
 | Documento | Descrição |
 |---|---|
-| [Pipeline e Arquitetura](docs/pipeline.md) | Detalhamento das 14 etapas do projeto |
-| [Dataset](docs/dataset.md) | Dicionário de dados e análise dos atributos |
-| [Clusterização](docs/clustering.md) | Técnicas, métricas e interpretação dos clusters |
+| [Pipeline e Arquitetura](docs/pipeline.md) | Detalhamento das etapas do projeto |
+| [Dataset](docs/dataset.md) | Dicionário de dados e atributos de clusterização |
+| [Clusterização](docs/clustering.md) | Baseline K-Means, métricas e perfis identificados |
 | [Modelos Preditivos](docs/models.md) | Algoritmos, métricas e experimento comparativo |
 | [Retenção](docs/retention.md) | Lógica de recomendação por perfil de cluster |
 | [Roadmap](docs/roadmap.md) | Status das fases, desafios e melhorias futuras |
@@ -91,7 +109,7 @@ docs/          # Documentação detalhada do projeto
 
 ## Tecnologias
 
-Python · Pandas · NumPy · Scikit-learn · Matplotlib · Seaborn · Jupyter
+Python · Pandas · NumPy · Scikit-learn · Matplotlib · Seaborn · Jupyter · SciPy
 
 ---
 
