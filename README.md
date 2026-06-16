@@ -48,7 +48,7 @@ Dados → EDA → Clusterização (baseline) → Predição de Churn → Recomen
 |---|---|---|
 | 1 | EDA e base limpa | Concluída (`01_eda.ipynb`) |
 | 2 | Agrupamento baseline (K-Means) | Concluída (`02_clustering.ipynb`) |
-| 3 | Comparação de algoritmos de cluster | Pendente |
+| 3 | Comparação de algoritmos de cluster | Concluída (`03_clustering_advanced.ipynb`) |
 | 4 | Predição de churn | Pendente |
 | 5 | Recomendações de retenção | Pendente |
 
