@@ -1,3 +1,5 @@
-algorithm,n_clusters,noise_pct,silhouette,davies_bouldin,calinski_harabasz
-kmeans,2,0.0,0.07560262602031093,1.5555917895129847,144.20922273921772
-dbscan,46,39.14525060343604,0.49645808688769877,0.6075051353478744,1431.6960400306468
+Modelo,F1 sem cluster,F1 com cluster,ΔF1,AUC sem cluster,AUC com cluster,ΔAUC
+Logistic Regression,0.6122,0.6152,0.003,0.84,0.8402,0.0002
+Decision Tree,0.5828,0.5828,0.0,0.8088,0.8088,0.0
+Random Forest,0.5764,0.5673,-0.0091,0.8242,0.8237,-0.0005
+MLP,0.5909,0.6104,0.0196,0.8231,0.8252,0.0022
