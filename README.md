@@ -16,7 +16,7 @@
 [![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ML-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=flat-square&logo=jupyter&logoColor=white)](https://jupyter.org/)
 [![License](https://img.shields.io/badge/Licença-MIT-green?style=flat-square)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow?style=flat-square)]()
+[![Status](https://img.shields.io/badge/Status-Etapa%205%20Pendente-orange?style=flat-square)]()
 
 </div>
 
@@ -48,11 +48,15 @@ Dados → EDA → Clusterização (baseline) → Predição de Churn → Recomen
 |---|---|---|
 | 1 | EDA e base limpa | Concluída (`01_eda.ipynb`) |
 | 2 | Agrupamento baseline (K-Means) | Concluída (`02_clustering.ipynb`) |
-| 3 | Comparação de algoritmos de cluster | Concluída (`03_clustering_advanced.ipynb`) |
-| 4 | Predição de churn | Pendente |
-| 5 | Recomendações de retenção | Pendente |
+| 3 | Comparação de algoritmos de cluster (DBSCAN) | Concluída (`03_clustering_advanced.ipynb`) |
+| 4 | Predição de churn | Concluída (`04_churn_prediction.ipynb`) |
+| 5 | Recomendações de retenção | **Pendente** |
 
-**Descoberta principal (Semana 2):** o K-Means com K=2 separou dois perfis distintos — clientes de **alto gasto e alto churn** (77,9%) vs. clientes **econômicos e estáveis** (22,1%). Silhouette Score = 0,344.
+**Descobertas principais:**
+
+- **Semana 2 (K-Means):** K=2 separou clientes de **alto gasto e alto churn** (77,9%, churn=31,8%) vs. clientes **econômicos estáveis** (22,1%, churn=8,0%). Silhouette = 0,344.
+- **Semana 3 (DBSCAN):** DBSCAN (eps=0,8, min_samples=3) produziu Silhouette = 0,364, mas gerou 108 micro-clusters com 0,4% de ruído — estrutura granular demais para uso direto como feature preditiva.
+- **Semana 4 (Predição):** Melhor modelo por validação cruzada: **Logistic Regression** (F1 CV = 0,629, AUC CV = 0,844). Adicionar o cluster K-Means como atributo gerou ganho marginal (ΔF1 ≤ +0,006), confirmando redundância com features já presentes no dataset.
 
 ---
 
@@ -75,7 +79,7 @@ Execute os notebooks na ordem numérica em `notebooks/`:
 01_eda → 02_clustering → 03_clustering_advanced → 04_churn_prediction → 05_recommendations
 ```
 
-Notebooks implementados até o momento: `01_eda`, `02_clustering`.
+Todos os notebooks até `04_churn_prediction` estão implementados e executados. O `05_recommendations` (Semana 5) ainda não foi criado.
 
 ---
 
@@ -86,8 +90,10 @@ data/
   raw/              # Dataset original (Telco-Customer-Churn.csv)
   processed/        # telco_clean.csv, telco_clustering_base.csv, telco_with_clusters.csv
 notebooks/          # Pipeline interativo (Jupyter)
-models/             # scaler.joblib, kmeans_model.joblib
-reports/figures/    # Gráficos EDA (01–03) e clustering (04–09)
+models/             # scaler.joblib, kmeans_model.joblib, churn_lr_baseline.joblib, scaler_pred.joblib
+reports/
+  figures/          # Gráficos EDA (01–03), clustering (04–09), clust. avançado (10–14), predição (10–15)
+  comparison_summary.csv  # Comparativo F1/AUC sem vs. com cluster por modelo
 docs/               # Documentação detalhada do projeto
 src/                # Módulos Python reutilizáveis (futuro)
 ```
