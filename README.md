@@ -16,7 +16,7 @@
 [![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ML-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=flat-square&logo=jupyter&logoColor=white)](https://jupyter.org/)
 [![License](https://img.shields.io/badge/Licença-MIT-green?style=flat-square)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Etapa%205%20Pendente-orange?style=flat-square)]()
+[![Status](https://img.shields.io/badge/Status-Concluído-green?style=flat-square)]()
 
 </div>
 
@@ -50,13 +50,14 @@ Dados → EDA → Clusterização (baseline) → Predição de Churn → Recomen
 | 2 | Agrupamento baseline (K-Means) | Concluída (`02_clustering.ipynb`) |
 | 3 | Comparação de algoritmos de cluster (DBSCAN) | Concluída (`03_clustering_advanced.ipynb`) |
 | 4 | Predição de churn | Concluída (`04_churn_prediction.ipynb`) |
-| 5 | Recomendações de retenção | **Pendente** |
+| 5 | Recomendações de retenção | Concluída (`05_recommendations.ipynb`) |
 
 **Descobertas principais:**
 
 - **Semana 2 (K-Means):** K=2 separou clientes de **alto gasto e alto churn** (77,9%, churn=31,8%) vs. clientes **econômicos estáveis** (22,1%, churn=8,0%). Silhouette = 0,344.
 - **Semana 3 (DBSCAN):** DBSCAN (eps=0,8, min_samples=3) produziu Silhouette = 0,364, mas gerou 108 micro-clusters com 0,4% de ruído — estrutura granular demais para uso direto como feature preditiva.
 - **Semana 4 (Predição):** Melhor modelo por validação cruzada: **Logistic Regression** (F1 CV = 0,629, AUC CV = 0,844). Adicionar o cluster K-Means como atributo gerou ganho marginal (ΔF1 ≤ +0,006), confirmando redundância com features já presentes no dataset.
+- **Semana 5 (Retenção):** Threshold ótimo = **0,45** (max F1 no teste). **3.162 clientes** (44,9%) classificados em risco; Cluster 0 concentra ações de **contato prioritário** (fibra + contrato mensal); Cluster 1 recebe **upsell/fidelidade**. Saída: `reports/recommendations.csv`.
 
 ---
 
@@ -79,7 +80,7 @@ Execute os notebooks na ordem numérica em `notebooks/`:
 01_eda → 02_clustering → 03_clustering_advanced → 04_churn_prediction → 05_recommendations
 ```
 
-Todos os notebooks até `04_churn_prediction` estão implementados e executados. O `05_recommendations` (Semana 5) ainda não foi criado.
+Todos os notebooks do pipeline estão implementados e executados na ordem numérica.
 
 ---
 
@@ -92,8 +93,9 @@ data/
 notebooks/          # Pipeline interativo (Jupyter)
 models/             # scaler.joblib, kmeans_model.joblib, churn_lr_baseline.joblib, scaler_pred.joblib
 reports/
-  figures/          # Gráficos EDA (01–03), clustering (04–09), clust. avançado (10–14), predição (10–15)
+  figures/          # Gráficos EDA (01–03), clustering (04–09), predição (10–15), retenção (16–20)
   comparison_summary.csv  # Comparativo F1/AUC sem vs. com cluster por modelo
+  recommendations.csv     # Recomendações de retenção por cliente (Etapa 05)
 docs/               # Documentação detalhada do projeto
 src/                # Módulos Python reutilizáveis (futuro)
 ```

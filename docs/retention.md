@@ -2,7 +2,7 @@
 
 O sistema traduz predições de churn em ações práticas personalizadas por perfil de cluster.
 
-> **Status:** perfis K-Means consolidados (Etapa 03). Modelo preditivo treinado (Etapa 04, F1 CV = 0,629). Lógica de recomendação a implementar no notebook `05_recommendations.ipynb` (Etapa 05 — pendente).
+> **Status:** implementado em `05_recommendations.ipynb` (Etapa 05). Threshold ótimo = 0,45; 3.162 clientes em risco com ações personalizadas por cluster.
 
 ---
 
